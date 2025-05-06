@@ -1,0 +1,61 @@
+<div id="scheduleSection" class="hidden">
+    <form id="scheduleForm">
+        <label for="subject">Materia:</label>
+        <select id="subject" required>
+            <option value="">Seleccionar Materia</option>
+            <option value="matematicas especiales">Matemáticas Especiales</option>
+            <option value="creacion de empresas">Creación de Empresas</option>
+            <option value="redes inalambricas">Redes Inalámbricas</option>
+            <option value="calidad de software">Calidad de Software</option>
+            <option value="bases de datos">Bases de Datos</option>
+        </select>
+
+        <label for="teacher">Docente:</label>
+        <input type="text" id="teacher" readonly>
+
+        <label for="room">Aula:</label>
+        <select id="room" required>
+            <option value="">Seleccionar Aula</option>
+            <option value="101">101</option>
+            <option value="102">102</option>
+            <option value="103">103</option>
+            <!-- Más aulas -->
+        </select>
+
+        <label for="day">Día:</label>
+        <select id="day" required>
+            <option value="">Seleccionar Día</option>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miércoles">Miércoles</option>
+            <option value="Jueves">Jueves</option>
+            <option value="Viernes">Viernes</option>
+        </select>
+
+        <label for="time">Hora:</label>
+        <select id="time" required>
+            <option value="">Seleccionar Hora</option>
+            <option value="8:00-9:00">8:00-9:00</option>
+            <option value="9:00-10:00">9:00-10:00</option>
+            <!-- Más horarios -->
+        </select>
+
+        <button type="submit">Guardar Horario</button>
+    </form>
+
+    <table id="scheduleTable">
+        <thead>
+            <tr>
+                <th>Materia</th>
+                <th>Docente</th>
+                <th>Aula</th>
+                <th>Día</th>
+                <th>Hora</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <button id="logoutButton">Cerrar Sesión</button>
+</div>
