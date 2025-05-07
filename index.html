@@ -1,61 +1,115 @@
-<div id="scheduleSection" class="hidden">
-    <form id="scheduleForm">
-        <label for="subject">Materia:</label>
-        <select id="subject" required>
-            <option value="">Seleccionar Materia</option>
-            <option value="matematicas especiales">Matemáticas Especiales</option>
-            <option value="creacion de empresas">Creación de Empresas</option>
-            <option value="redes inalambricas">Redes Inalámbricas</option>
-            <option value="calidad de software">Calidad de Software</option>
-            <option value="bases de datos">Bases de Datos</option>
-        </select>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro, Inicio de Sesión y Crear Horarios</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Sección de Registro -->
+        <div id="registerSection">
+            <h1>Registro</h1>
+            <form id="registerForm">
+                <label for="registerEmail">Correo Electrónico:</label>
+                <input type="email" id="registerEmail" placeholder="usuario@correo.com" required>
+                <label for="registerPassword">Contraseña:</label>
+                <input type="password" id="registerPassword" placeholder="Contraseña" required>
+                <button type="submit">Registrar</button>
+            </form>
+            <p>¿Ya tienes una cuenta? <button onclick="toggleLogin()">Inicia Sesión</button></p>
+        </div>
 
-        <label for="teacher">Docente:</label>
-        <input type="text" id="teacher" readonly>
+        <!-- Sección de Inicio de Sesión -->
+        <div id="loginSection" class="hidden">
+            <h1>Iniciar Sesión</h1>
+            <form id="loginForm">
+                <label for="loginEmail">Correo Electrónico:</label>
+                <input type="email" id="loginEmail" placeholder="usuario@correo.com" required>
+                <label for="loginPassword">Contraseña:</label>
+                <input type="password" id="loginPassword" placeholder="Contraseña" required>
+                <button type="submit">Iniciar Sesión</button>
+            </form>
+            <p>¿No tienes una cuenta? <button onclick="toggleRegister()">Regístrate</button></p>
+        </div>
 
-        <label for="room">Aula:</label>
-        <select id="room" required>
-            <option value="">Seleccionar Aula</option>
-            <option value="101">101</option>
-            <option value="102">102</option>
-            <option value="103">103</option>
-            <!-- Más aulas -->
-        </select>
+        <!-- Sección de Crear Horarios -->
+        <div id="scheduleSection" class="hidden">
+            <h2>Crear Horario</h2>
+            <button id="logoutButton">Cerrar Sesión</button>
+            <form id="scheduleForm">
+                <!-- Materia -->
+                <label for="subject">Materia:</label>
+                <select id="subject" required>
+                    <option value="Matemáticas Especiales">Matemáticas Especiales</option>
+                    <option value="Creación de Empresas">Creación de Empresas</option>
+                    <option value="Redes Inalámbricas">Redes Inalámbricas</option>
+                    <option value="Calidad de Software">Calidad de Software</option>
+                    <option value="Bases de Datos">Bases de Datos</option>
+                </select>
+                
+                <!-- Docente -->
+                <label for="teacher">Docente:</label>
+                <select id="teacher" required>
+                    <option value="">Selecciona una materia</option>
+                </select>
+                
+                <!-- Aula -->
+                <label for="room">Aula:</label>
+                <select id="room" required>
+                    <option value="101">101</option>
+                    <option value="102">102</option>
+                    <option value="103">103</option>
+                    <option value="104">104</option>
+                    <option value="105">105</option>
+                    <option value="201">201</option>
+                    <option value="202">202</option>
+                    <option value="203">203</option>
+                    <option value="204">204</option>
+                    <option value="205">205</option>
+                    <option value="300">300</option>
+                    <option value="301">301</option>
+                    <option value="302">302</option>
+                    <option value="303">303</option>
+                    <option value="304">304</option>
+                </select>
 
-        <label for="day">Día:</label>
-        <select id="day" required>
-            <option value="">Seleccionar Día</option>
-            <option value="Lunes">Lunes</option>
-            <option value="Martes">Martes</option>
-            <option value="Miércoles">Miércoles</option>
-            <option value="Jueves">Jueves</option>
-            <option value="Viernes">Viernes</option>
-        </select>
+                <!-- Día -->
+                <label for="day">Día:</label>
+                <select id="day" required>
+                    <option value="Lunes">Lunes</option>
+                    <option value="Martes">Martes</option>
+                    <option value="Miércoles">Miércoles</option>
+                    <option value="Jueves">Jueves</option>
+                    <option value="Viernes">Viernes</option>
+                </select>
 
-        <label for="time">Hora:</label>
-        <select id="time" required>
-            <option value="">Seleccionar Hora</option>
-            <option value="8:00-9:00">8:00-9:00</option>
-            <option value="9:00-10:00">9:00-10:00</option>
-            <!-- Más horarios -->
-        </select>
+                <!-- Hora -->
+                <label for="time">Hora:</label>
+                <input type="time" id="time" required>
 
-        <button type="submit">Guardar Horario</button>
-    </form>
+                <button type="submit">Agregar Horario</button>
+            </form>
 
-    <table id="scheduleTable">
-        <thead>
-            <tr>
-                <th>Materia</th>
-                <th>Docente</th>
-                <th>Aula</th>
-                <th>Día</th>
-                <th>Hora</th>
-                <th>Acción</th>
-            </tr>
-        </thead>
-        <tbody></tbody>
-    </table>
-
-    <button id="logoutButton">Cerrar Sesión</button>
-</div>
+            <!-- Tabla de Horarios Agregados -->
+            <h3>Horarios Agregados</h3>
+            <table id="scheduleTable">
+                <thead>
+                    <tr>
+                        <th>Materia</th>
+                        <th>Docente</th>
+                        <th>Aula</th>
+                        <th>Día</th>
+                        <th>Hora</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Las filas se agregarán aquí dinámicamente -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
